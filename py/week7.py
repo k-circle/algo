@@ -90,7 +90,7 @@ def djikstra_with_heap():
         node = heapq.heappop(q)
         for k, v in graph[node[0]].items():
             if costs[k] >= node[1]:
-                costs[k] = costs[node[0]] + graph[node[0]][k]
+                costs[k] = min(costs[k], costs[node[0]] + graph[node[0]][k])
                 heapq.heappush(q, (k, v))
                 path[k] = node[0]
     end = 'piano'
